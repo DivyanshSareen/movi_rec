@@ -1,0 +1,33 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    height: 25em;
+}
+
+.card-img{
+    align-self: center;
+    border-radius: 4px;
+}
+
+.card-content{
+    padding: 1.5em;
+}
+
+.card-det{
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    line-height: 0;
+    margin-top: 9px;
+    font-size: 0.9rem;
+}
+
+.card-title{
+    margin: 0;
+    line-height: 0;
+}
