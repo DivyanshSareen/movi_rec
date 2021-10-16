@@ -12,10 +12,15 @@ body{
 .card-img{
     align-self: center;
     border-radius: 4px;
+    max-width: 15em;
+    max-height: 20em;
 }
 
 .card-content{
     padding: 1.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-det{
@@ -30,4 +35,6 @@ body{
 .card-title{
     margin: 0;
     line-height: 0;
+    font-weight: normal;
+    
 }
