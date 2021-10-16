@@ -10,7 +10,7 @@ function App() {
     const res = await fetch("https://api.themoviedb.org/3/trending/movie/day?api_key=");
     const json = await res.json();
     console.log(json.results);
-    setData(json.results)
+    setData(json.results);
   }
 
   return (
