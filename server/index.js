@@ -1,9 +1,23 @@
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
 import express from 'express';
+import cors from 'cors';
+
 dotenv.config();
 const app = express();
-console.log(process.env.API_KEY)
+
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
+
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions)) // Use this after the variable declaration
   async function requestMovies(req, res, next){
 
     const r = await fetch("https://api.themoviedb.org/3/trending/movie/day?api_key="+process.env.API_KEY);
