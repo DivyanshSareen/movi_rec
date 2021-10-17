@@ -3,14 +3,11 @@ import { useState, useEffect } from 'react';
 function App() {
   const [data, setData] = useState([]);
   
-  useEffect(() => requestPets(), []);
+  useEffect(() => requestData(), []);
 
-  async function requestPets(){
-
-    const res = await fetch("https://api.themoviedb.org/3/trending/movie/day?api_key=");
-    const json = await res.json();
-    console.log(json.results);
-    setData(json.results);
+  async function requestData(){
+    const movies = await fetch("http://localhost:3001/");
+    console.log(movies);
   }
 
   return (
