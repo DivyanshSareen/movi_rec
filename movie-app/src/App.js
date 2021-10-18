@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "./component/Card";
 import { useState, useEffect } from 'react';
 function App() {
   const [data, setData] = useState([]);
@@ -9,7 +9,7 @@ function App() {
     try{
       const movies = await fetch("http://localhost:3001/get");
       const json = await movies.json();
-    console.log(json);
+      setData(json.results);
     }
     catch(e){
       console.log(e);
