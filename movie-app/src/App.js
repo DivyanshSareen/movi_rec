@@ -1,5 +1,6 @@
-import Card from "./component/Card";
 import { useState, useEffect } from 'react';
+import Trend from './component/Trend';
+
 function App() {
   const [data, setData] = useState([]);
   
@@ -18,11 +19,7 @@ function App() {
   }
 
   return (
-    <div className="movie-grid">
-    {
-      data.map(e => <Card key={e.id} name = {e.title} rate = {e.vote_average} date = {e.release_date} poster = {e.poster_path}/>)
-    } 
-    </div>
+    <Trend data = {data}/>
   );
 }
 
