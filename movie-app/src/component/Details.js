@@ -1,4 +1,4 @@
-const Mpage = () => {
+const Details = () => {
 
     return(
         <div>
@@ -7,4 +7,4 @@ const Mpage = () => {
     );
 }
 
-export default Mpage;
+export default Details;
