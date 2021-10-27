@@ -17,12 +17,18 @@ const corsOptions ={
    optionSuccessStatus:200,
 }
 
+async function getdata(req, res, next){
+  const d = await fetch("https://api.themoviedb.org/3/movie/550?api_key="+process.env.API_KEY);
+  const m = await d.json();
+  req.m = m;
+  next();
+}
+
 app.use(cors(corsOptions)) // Use this after the variable declaration
   async function requestMovies(req, res, next){
 
     const r = await fetch("https://api.themoviedb.org/3/trending/movie/day?api_key="+process.env.API_KEY);
     const json = await r.json();
-    console.log(json)
     req.movies = json;
     next();
   }
@@ -32,6 +38,10 @@ app.get("/get", (req, res) =>{
     res.send(req.movies);
 });
 
+app.use("/details/:id",getdata);
+app.get("/details/:id", function(req, res) {
+   res.send(req.m)
+})
 app.listen(3001, ()=>{
     console.log("running on prot 3001");
 })
