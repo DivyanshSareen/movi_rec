@@ -18,7 +18,7 @@ const corsOptions ={
 }
 
 async function getdata(req, res, next){
-  const d = await fetch("https://api.themoviedb.org/3/movie/550?api_key="+process.env.API_KEY);
+  const d = await fetch(`https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${process.env.API_KEY}`);
   const m = await d.json();
   req.m = m;
   next();
