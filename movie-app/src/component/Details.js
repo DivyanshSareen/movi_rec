@@ -1,3 +1,4 @@
+import './Details.css';
 import { useState, useEffect } from "react";
 import { withRouter } from "react-router";
 
@@ -16,23 +17,23 @@ const Details = (props) => {
     }
     return(
         <div>
-        {isBusy ? (<h1>loading</h1>) :
-            (<div>
+        {isBusy ? (<h1>Loading...</h1>) :
+            (<div className="details">
                 <div>
-                    <img src={"https://image.tmdb.org/t/p/w500"+movie.poster_path} alt={props.name+"_image"}/>
+                    <img src={"https://image.tmdb.org/t/p/w500"+movie.poster_path} alt={props.name+"_image"} className="m-img"/>
                 </div>
                 <div>
-                    <h2>{movie.title}</h2>
-                    <div>
-                        <span>{movie.vote_average}</span>
-                        <span>{movie.runtime}</span>
+                    <h2 className="m-name">{movie.title}</h2>
+                    <div className="m-stat">
+                        <span>{movie.vote_average} / 10</span>
+                        <span>{movie.runtime} min</span>
                     </div>
-                    <p>{movie.overview}</p>
-                    <div>
+                    <p className="m-desc">{movie.overview}</p>
+                    <div className="elements">
                         <span>Released: </span> <span>{movie.release_date}</span>
-                        <span>Genre: </span> <span>{movie.genres.map(e => e.name)}</span>
-                        <span>Language: </span> <span>{movie.spoken_languages.map(e => e.english_name)}</span>
-                        <span>Production: </span> <span>{movie.production_companies.map(e => e.name)}</span>
+                        <span>Genre: </span> <span className="elements-value">{movie.genres.map(e => <span>{e.name}</span>)}</span>
+                        <span>Language: </span> <span className="elements-value">{movie.spoken_languages.map(e => <span>{e.english_name}</span>)}</span>
+                        <span>Production: </span> <span className="elements-value">{movie.production_companies.map(e => <div>{e.name}</div>)}</span>
                     </div>
                 </div>
             </div>)

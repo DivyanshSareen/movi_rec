@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.details{
+    display: flex;
+    flex-direction: row;
+    margin: 7em;
+    gap: 3.5em;
+}
+
+.m-img{
+    border: 3px grey solid;
+    border-radius: 8px;
+    max-width: 15em;
+    max-height: 20em;
+}
+
+.m-name{
+    font-weight: 300;
+}
+
+.m-stat{
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+}
+
+.m-desc{
+    padding-right: 4rem;
+}
+
+.elements{
+    display: grid;
+    grid-template-columns: auto auto;
+    padding-right: 4rem;
+    row-gap: 1em;
+}
+
+.elements-value{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
