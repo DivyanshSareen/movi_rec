@@ -17,6 +17,7 @@ const corsOptions ={
    optionSuccessStatus:200,
 }
 
+app.use(cors(corsOptions)) // Use this after the variable declaration
 async function getdata(req, res, next){
   const d = await fetch(`https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${process.env.API_KEY}`);
   const m = await d.json();
@@ -24,7 +25,6 @@ async function getdata(req, res, next){
   next();
 }
 
-app.use(cors(corsOptions)) // Use this after the variable declaration
   async function requestMovies(req, res, next){
 
     const r = await fetch("https://api.themoviedb.org/3/trending/movie/day?api_key="+process.env.API_KEY);
@@ -34,14 +34,15 @@ app.use(cors(corsOptions)) // Use this after the variable declaration
   }
 app.use(requestMovies);
 app.get("/get", (req, res) =>{
-    console.log(req.movies)
+    // console.log(req.movies)
     res.send(req.movies);
 });
 
 app.use("/details/:id",getdata);
-app.get("/details/:id", function(req, res) {
+app.get("/details/:id", (req, res) => {
+  console.log(req.m)
    res.send(req.m)
-})
+});
 app.listen(3001, ()=>{
     console.log("running on prot 3001");
 })
