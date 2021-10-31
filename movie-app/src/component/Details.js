@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { withRouter } from "react-router";
 
 const Details = (props) => {
-    const [isBusy, setBusy] = useState(true);
+    const [busy, setBusy] = useState(true);
     const [movie, setMovie] = useState({});
 
     useEffect(()=> requestMovie(), []);
@@ -17,7 +17,7 @@ const Details = (props) => {
     }
     return(
         <div>
-        {isBusy ? (<h1>Loading...</h1>) :
+        {busy ? (<h1>Loading...</h1>) :
             (<div className="details">
                 <div>
                     <img src={"https://image.tmdb.org/t/p/w500"+movie.poster_path} alt={props.name+"_image"} className="m-img"/>
@@ -31,8 +31,11 @@ const Details = (props) => {
                     <p className="m-desc">{movie.overview}</p>
                     <div className="elements">
                         <span>Released: </span> <span>{movie.release_date}</span>
+
                         <span>Genre: </span> <span className="elements-value">{movie.genres.map(e => <span>{e.name}</span>)}</span>
+
                         <span>Language: </span> <span className="elements-value">{movie.spoken_languages.map(e => <span>{e.english_name}</span>)}</span>
+
                         <span>Production: </span> <span className="elements-value">{movie.production_companies.map(e => <div>{e.name}</div>)}</span>
                     </div>
                 </div>
