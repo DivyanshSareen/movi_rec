@@ -27,13 +27,14 @@ async function getdata(req, res, next){
 
   async function requestMovies(req, res, next){
 
-    const r = await fetch("https://api.themoviedb.org/3/trending/movie/day?api_key="+process.env.API_KEY);
+    const r = await fetch("https://api.themoviedb.org/3/movie/"+req.params.type+"?api_key="+process.env.API_KEY+"&page=1");
     const json = await r.json();
     req.movies = json;
+    console.log(req.movies);
     next();
   }
-app.use(requestMovies);
-app.get("/get", (req, res) =>{
+app.use("/movie/:type",requestMovies);
+app.get("/movie/:type", (req, res) =>{
     // console.log(req.movies)
     res.send(req.movies);
 });

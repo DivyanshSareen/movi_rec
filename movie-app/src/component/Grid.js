@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react"
-import Card from "./Card"
+import { useState, useEffect } from "react";
+import Card from "./Card";
+import "./Grid.css";
 
 const Grid = (props) => {
     const [data, setData] = useState([]);
@@ -11,8 +12,9 @@ const Grid = (props) => {
         try{
             const movies = await fetch("http://localhost:3001/movie/"+props.grid_type);
             const json = await movies.json();
-            setData(json);
+            setData(json.results);
             setBusy(false);
+            console.log(json)
         }
         catch(e)
         {
@@ -23,7 +25,7 @@ const Grid = (props) => {
     return(<div>
         {busy ? (<h1>loading...</h1>) : (
             <div className="movie-grid">
-            {
+                {
                 data.map(e => 
                 <Card 
                 key={e.id} 
@@ -38,3 +40,5 @@ const Grid = (props) => {
         )}
     </div>)
 }
+
+export default Grid;

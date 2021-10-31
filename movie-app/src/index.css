@@ -5,13 +5,6 @@ body{
     padding: 0;
 }
 
-.movie-grid{
-    display: grid;
-    grid-template-columns: 15em 15em 15em 15em;
-    padding-left: 10px;
-    justify-content: center;
-}
-
 .title{
     text-align: center;
 }
