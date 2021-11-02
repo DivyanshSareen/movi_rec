@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Card = (props) => {
     return ( 
-    <Link to={`/details/${props.id}`}>  
+    <Link to={`/details/${props.id}`} className="card-link">  
     <div className="card">
             <img src={"https://image.tmdb.org/t/p/w500"+props.poster} alt={props.name+"_image"}  className="card-img"/>
         <div className="card-content">
@@ -17,7 +17,7 @@ const Card = (props) => {
             </div>
         </div>
     </div>
-    </Link>  );
+    </Link>);
 }
 
 export default Card;

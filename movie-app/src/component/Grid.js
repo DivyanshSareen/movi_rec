@@ -6,6 +6,7 @@ const Grid = (props) => {
     const [data, setData] = useState([]);
     const [busy, setBusy] = useState(true);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => requestData(), []);
 
     async function requestData(){
