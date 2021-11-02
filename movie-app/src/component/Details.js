@@ -6,6 +6,7 @@ const Details = (props) => {
     const [busy, setBusy] = useState(true);
     const [movie, setMovie] = useState({});
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(()=> requestMovie(), []);
     // console.log(props.match.params)
     async function requestMovie(){
