@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Card from "./Card";
 import "./Grid.css";
 
-const Grid = (props) => {
+const RecGrid = (props) => {
     const [data, setData] = useState([]);
     const [busy, setBusy] = useState(true);
 
@@ -11,11 +11,20 @@ const Grid = (props) => {
 
     async function requestData(){
         try{
-            const movies = await fetch("http://localhost:3001/movie/"+props.grid_type);
-            const json = await movies.json();
-            setData(json.results);
+            const resp = await fetch("http://localhost:3001/rec/"+props.id);
+            const rec_ids = await resp.json();
+            const temp = []
+            for(let i of rec_ids["rec_ids"]){
+                // console.log(i+" ")
+                // const movie = await fetch("http://localhost:3001/detials/"+i);
+                // const json = await movie.json();
+                // temp.push(json);
+                const data = await fetch(`http://localhost:3001/details/${i}`)
+                const details = await data.json();
+                temp.push(details)
+            }
+            setData(temp);
             setBusy(false);
-            // console.log(json)
         }
         catch(e)
         {
@@ -29,7 +38,7 @@ const Grid = (props) => {
                 {
                 data.map(e => 
                 <Card 
-                key={e.id} 
+                key={e.title} 
                 id = {e.id}
                 name = {e.title} 
                 rate = {e.vote_average} 
@@ -42,4 +51,4 @@ const Grid = (props) => {
     </div>)
 }
 
-export default Grid;
+export default RecGrid;

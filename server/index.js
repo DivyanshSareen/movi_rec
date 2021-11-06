@@ -76,5 +76,5 @@ app.get("/details/:id", (req, res) => {
    res.send(req.m)
 });
 app.listen(3001, ()=>{
-    console.log("running on prot 3001");
+    console.log("running on port 3001");
 })

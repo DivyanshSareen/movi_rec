@@ -1,4 +1,5 @@
 import './Details.css';
+import RecGrid from './RecGrid';
 import { useState, useEffect } from "react";
 import { withRouter } from "react-router";
 
@@ -13,7 +14,6 @@ const Details = (props) => {
         const data = await fetch(`http://localhost:3001/details/${props.match.params.id}`)
         const details = await data.json();
         setMovie(details);
-        console.log(movie)
         setBusy(false);
     }
     return(
@@ -33,15 +33,20 @@ const Details = (props) => {
                     <div className="elements">
                         <span>Released: </span> <span>{movie.release_date}</span>
 
-                        <span>Genre: </span> <span className="elements-value">{movie.genres.map(e => <span>{e.name}</span>)}</span>
+                        <span>Genre: </span> <span className="elements-value">{movie.genres.map(e => <span key ={e.name}>{e.name}</span>)}</span>
 
-                        <span>Language: </span> <span className="elements-value">{movie.spoken_languages.map(e => <span>{e.english_name}</span>)}</span>
+                        <span>Language: </span> <span className="elements-value">{movie.spoken_languages.map(e => <span key={e.english_name}>{e.english_name}</span>)}</span>
 
-                        <span>Production: </span> <span className="elements-value">{movie.production_companies.map(e => <div>{e.name}</div>)}</span>
+                        <span>Production: </span> <span className="elements-value">{movie.production_companies.map(e => <div key={e.name}>{e.name}</div>)}</span>
                     </div>
                 </div>
-            </div>)
+            </div>
+            )
         }
+        
+            
+                
+        <RecGrid id={movie.id}/>
         </div>
     );
 }
